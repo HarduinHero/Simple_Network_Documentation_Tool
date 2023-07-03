@@ -1,11 +1,13 @@
-# Simple_Network_Documentation_Tool
+= Simple_Network_Documentation_Tool
 A simple web tool that makes it easy to keep a logical and physical network map up to date.
 
-## Description
+[NOTE] This document is a transcription of the original (READEME.fr.adoc) written in French.
+
+== Description
 
 This web application is designed to document small and medium-sized networks. The project is based on a server-side LAPP (Linux, Apache, PostgresSQL, PHP) technology stack. The expected functionality is set out later in this document. 
 
-## Licencing
+== Licencing
 
 Copyright (C) 2023 HarduinHero
 
@@ -20,6 +22,3 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-| Tables | Are | Cool |
-|----------|:-------------:|------:| | col 1 is| left-aligned | $1600 |
