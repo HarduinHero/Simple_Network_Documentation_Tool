@@ -1,7 +1,8 @@
 = Simple_Network_Documentation_Tool
 A simple web tool that makes it easy to keep a logical and physical network map up to date.
 
-[NOTE] This document is a transcription of the original (READEME.fr.adoc) written in French.
+[NOTE]
+This document is a transcription of the original (READEME.fr.adoc) written in French.
 
 == Description
 
