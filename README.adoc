@@ -10,7 +10,7 @@ This web application is designed to document small and medium-sized networks. Th
 
 == Licencing
 
-Copyright (C) 2023 HarduinHero
+Copyright (C) 2023 Harduin_Hero
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

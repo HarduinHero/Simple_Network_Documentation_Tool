@@ -8,7 +8,7 @@ Cette application web est conçue pour documenter des réseaux de petite et moye
 
 == Licences
 
-Copyright (C) 2023 HarduinHero
+Copyright (C) 2023 Harduin_Hero
 
 Ce programme est un logiciel libre : vous pouvez le redistribuer et/ou le modifier selon les termes de la licence GNU.
 et/ou le modifier selon les termes de la Licence Publique Générale GNU telle que publiée par la
@@ -21,3 +21,15 @@ Licence publique générale GNU pour plus de détails.
 
 Vous devriez avoir reçu une copie de la licence publique générale GNU
 avec ce programme.  Si ce n'est pas le cas, consultez <https://www.gnu.org/licenses/>.
+
+== User story
+
+Les prioritées sont données selon l'échele MoSCoW (Must, Should, Could, Will/Would). Les user stories sont des formulations de la forme `En tant que  `
+
+.Tableau des User-story
+|===
+|Priorité |User-story
+|En tant qu'``administrateur``, je veut pouvoir créer des utilisateurs.
+|En tant qu'admini
+
+|===
