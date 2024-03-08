@@ -1,52 +1,62 @@
-html, body {
+/* @font-face {
+    font-family: ShareTech-Regular;
+    src: url(../fonts/ShareTech-Regular.ttf);
+}
+* {
+    font-family: ShareTech-Regular;
+} */
+
+body, html {
+    margin: 0;
+    padding: 0;
     height: 100%;
-    width: 100%;
-    padding: 0;
-    margin: 0;
 }
-header {
-    margin: 0;
-    padding: 20px;
-    background-color: var(--accent-bg-header);
+
+.toolbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%; /* Hauteur de la barre */
+    border-right: 1px solid black;
+    overflow-y: scroll;
 }
-header > h1 {
-    margin: 0;
-    color: var(--secondary-fg);
+.toolbar-group {
+    border-bottom: 1px solid black;
 }
-.center_container {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-table {
-    width: 75%;
-    min-width: 300px;
-    max-width: 1500px;
-    border-collapse: collapse;
-    border: 1px solid var(--accent-bg-header);
-}
-th {
-    background-color: var(--accent-bg-header);
-    border-top: 1px solid var(--accent-bg-header);
-    border-bottom: 1px solid var(--accent-bg-header);
-    color: var(--secondary-fg);
+.toolbar-button, .toolbar-group-header {
+    font-size: 18px;
     padding: 10px;
-    text-align: left;
-}
-td input, td select{
-    padding: 0;
+    display: flex;
+    align-items: center;
     width: 100%;
-    align-content: center;
-    display: block;
-    border-width: 0;
-    outline: 1px solid var(--accent-bg-header);
+    border: none;
+    background-color: inherit;
 }
-td {
-    padding: 5px;
-    border-top: 1px solid var(--accent-bg-header);
-    border-bottom: 1px solid var(--accent-bg-header);
+.toolbar-button:hover, .toolbar-group-header:hover, 
+.toolbar-button:focus, .toolbar-group-header:focus{
+    background-color: rgb(240, 240, 240);
 }
-.alt-row>tr:nth-child(2n) {
-    background-color: var(--secondary-bg);
+.toolbar-button:active, .toolbar-group-header:active{
+    background-color: rgb(177, 177, 177);
+}
+.toolbar-group-header span {
+    margin: 0 15px;
+}
+.toolbar-group-header img {
+    width: 50px;
+}
+.toolbar-group-header .folder-arrow {
+    width: 25px;
+    margin-left: auto;
+    
+}
+.folder-arrow.down {
+    transform: rotate(180deg);
+}
+
+.toolbar-subgroup {
+    margin-left: 20px;
+}
+.toolbar-subgroup .toolbar-button {
+    border-top: 1px solid rgb(177, 177, 177);
 }
