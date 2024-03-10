@@ -1,30 +1,45 @@
-/* @font-face {
-    font-family: ShareTech-Regular;
-    src: url(../fonts/ShareTech-Regular.ttf);
-}
-* {
-    font-family: ShareTech-Regular;
-} */
-
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
 }
+.flex-h {
+    display: flex;
+    flex-direction: row;
+}
+/************************/
+/******** COLORS ********/
+/************************/
 
-.toolbar {
+:root{
+    --default-text : black;
+    --default-background: white;
+    --border: black;
+    --light-accent : rgb(240, 240, 240);
+    --strong-accent : rgb(177, 177, 177);
+}
+
+
+
+/***********************/
+/******* TOOLBAR *******/
+/***********************/
+
+#toolbar {
+    font-size: 18px;
     position: fixed;
     left: 0;
     top: 0;
-    height: 100%; /* Hauteur de la barre */
-    border-right: 1px solid black;
+    height: 100%;
+    border-right: 1px solid var(--border);
     overflow-y: scroll;
+    max-width: 300px;
 }
-.toolbar-group {
-    border-bottom: 1px solid black;
+.toolbar-toplevel {
+    border-bottom: 1px solid var(--border);
 }
-.toolbar-button, .toolbar-group-header {
-    font-size: 18px;
+.toolbar-button, .toolbar-toplevel-header{
+    font-size: inherit;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -32,31 +47,122 @@ body, html {
     border: none;
     background-color: inherit;
 }
-.toolbar-button:hover, .toolbar-group-header:hover, 
-.toolbar-button:focus, .toolbar-group-header:focus{
-    background-color: rgb(240, 240, 240);
+.toolbar-button:hover, .toolbar-toplevel-header:hover, 
+.toolbar-button:focus, .toolbar-toplevel-header:focus{
+    background-color: var(--light-accent)
 }
-.toolbar-button:active, .toolbar-group-header:active{
-    background-color: rgb(177, 177, 177);
+.toolbar-button:active, .toolbar-toplevel-header:active{
+    background-color: var(--strong-accent)
 }
-.toolbar-group-header span {
+.toolbar-button img {
+    width: 25px;
+}
+.toolbar-button span,
+.toolbar-toplevel-header span {
     margin: 0 15px;
 }
-.toolbar-group-header img {
+.toolbar-button.min-width {
+    width: fit-content;
+}
+table .toolbar-button {
+    padding: 0;
+}
+.toolbar-toplevel-header img {
     width: 50px;
 }
-.toolbar-group-header .folder-arrow {
+.toolbar-toplevel-header .group-arrow {
     width: 25px;
     margin-left: auto;
-    
 }
-.folder-arrow.down {
+img.down {
     transform: rotate(180deg);
 }
+.toolbar-toplevel-content {
+    margin-left: 20px;
+    overflow: hidden;
+}
+.toolbar-toplevel-content.hidden {
+    height: 0;
+}
+.toolbar-toplevel-content > * {
+    border-top: 1px solid var(--strong-accent)
+}
+.toolbar-section {
+    padding: 10px;
+    width: 100%;
+}
+.toolbar-section .full-width {
+    width: 90%;
+    max-width: 90%;
+    font-size: 14px;
+}
 
-.toolbar-subgroup {
+/************************/
+/******** TOPBAR ********/
+/************************/
+
+#topbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 50px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+#topbar>span {
     margin-left: 20px;
 }
-.toolbar-subgroup .toolbar-button {
-    border-top: 1px solid rgb(177, 177, 177);
+#topbar .display {
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--strong-accent);
+}
+#topbar .display:hover {
+    color: var(--default-text);
+    background-color: var(--light-accent);
+}
+#topbar .separator {
+    height: 100%;
+    width: 0;
+    border-left: 1px solid var(--border);
+}
+
+/***********************/
+/******** POPUP ********/
+/***********************/
+.popup-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9000;
+    background-color: rgba(0, 0, 0, 0.75);;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popup {
+    background-color: var(--default-background);
+    z-index: 9900;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/***************************/
+/******** MAIN-AREA ********/
+/***************************/
+#main-area {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
 }

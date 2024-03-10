@@ -1,0 +1,77 @@
+<svg
+   width="500.80mm"
+   height="88.9mm"
+   viewBox="0 0 500.80 88.9"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+   <g>
+      <rect class="voidbg" width="450" height="17.45" x="25.4" y="27" />
+      <rect class="solid"  width="450" height="27" x="25.4" y="0" />
+      <path class="solid"  d="m 0,27 25.4,-27 0,44.45 H 0 Z" />
+      <path class="solid"  d="M 500.8,27 475.4,0 v 44.45 h 25.4 z" />
+      <path class="voidbg" d="M 41.974435,3.5 H 45 L 33.025565,23.5 H 30 Z" />
+      <path class="voidbg" d="m 56.873253,3.5 h 3 L 48,23.5 h -3 z" />
+      <path class="voidbg" d="M 71.974435,3.5 H 75 L 63.025565,23.5 H 60 Z" />
+      <path class="voidbg" d="m 86.873253,3.5 h 3 L 78,23.5 h -3 z" />
+      <path class="voidbg" d="M 101.97444,3.5 H 105 L 93.02557,23.5 H 90 Z" />
+      <path class="voidbg" d="m 116.87325,3.5 h 3 L 108,23.5 h -3 z" />
+      <path class="voidbg" d="M 131.97444,3.5 H 135 L 123.02557,23.5 H 120 Z" />
+      <path class="voidbg" d="m 146.87325,3.5 h 3 L 138,23.5 h -3 z" />
+      <path class="voidbg" d="M 161.97443,3.5 H 165 L 153.02556,23.5 H 150 Z" />
+      <path class="voidbg" d="m 176.87325,3.5 h 3 L 168,23.5 h -3 z" />
+      <path class="voidbg" d="M 191.97443,3.5 H 195 L 183.02556,23.5 H 180 Z" />
+      <path class="voidbg" d="m 206.87326,3.5 h 3 L 198,23.5 h -3 z" />
+      <path class="voidbg" d="M 221.97444,3.5 H 225 L 213.02557,23.5 H 210 Z" />
+      <path class="voidbg" d="m 236.87325,3.5 h 3 L 228,23.5 h -3 z" />
+      <path class="voidbg" d="M 251.97444,3.5 H 255 L 243.02557,23.5 H 240 Z" />
+      <path class="voidbg" d="m 266.87325,3.5 h 3 L 258,23.5 h -3 z" />
+      <path class="voidbg" d="M 281.97443,3.5 H 285 L 273.02556,23.5 H 270 Z" />
+      <path class="voidbg" d="m 296.87325,3.5 h 3 L 288,23.5 h -3 z" />
+      <path class="voidbg" d="M 311.97443,3.5 H 315 l -11.97444,20 H 300 Z" />
+      <path class="voidbg" d="m 326.87325,3.5 h 3 L 318,23.5 h -3 z" />
+      <path class="voidbg" d="M 341.97444,3.5 H 345 L 333.02557,23.5 H 330 Z" />
+      <path class="voidbg" d="m 356.87325,3.5 h 3 L 348,23.5 h -3 z" />
+      <path class="voidbg" d="M 371.97444,3.5 H 375 l -11.97443,20 H 360 Z" />
+      <path class="voidbg" d="m 386.87325,3.5 h 3 L 378,23.5 h -3 z" />
+      <path class="voidbg" d="M 401.97443,3.5 H 405 L 393.02556,23.5 H 390 Z" />
+      <path class="voidbg" d="m 416.87325,3.5 h 3 L 408,23.5 h -3 z" />
+      <path class="voidbg" d="M 431.97443,3.5 H 435 L 423.02556,23.5 H 420 Z" />
+      <path class="voidbg" d="m 446.87326,3.5 h 3 L 438,23.5 h -3 z" />
+      <path class="voidbg" d="M 461.97444,3.5 H 465 L 453.02557,23.5 H 450 Z" />
+   </g>
+   <g transform="translate(0, 44.45) rotate(180, 250.40, 22.225)">
+      <rect class="voidbg" width="450" height="17.45" x="25.4" y="27" />
+      <rect class="solid"  width="450" height="27" x="25.4" y="0" />
+      <path class="solid"  d="m 0,27 25.4,-27 0,44.45 H 0 Z" />
+      <path class="solid"  d="M 500.8,27 475.4,0 v 44.45 h 25.4 z" />
+      <path class="voidbg" d="M 41.974435,3.5 H 45 L 33.025565,23.5 H 30 Z" />
+      <path class="voidbg" d="m 56.873253,3.5 h 3 L 48,23.5 h -3 z" />
+      <path class="voidbg" d="M 71.974435,3.5 H 75 L 63.025565,23.5 H 60 Z" />
+      <path class="voidbg" d="m 86.873253,3.5 h 3 L 78,23.5 h -3 z" />
+      <path class="voidbg" d="M 101.97444,3.5 H 105 L 93.02557,23.5 H 90 Z" />
+      <path class="voidbg" d="m 116.87325,3.5 h 3 L 108,23.5 h -3 z" />
+      <path class="voidbg" d="M 131.97444,3.5 H 135 L 123.02557,23.5 H 120 Z" />
+      <path class="voidbg" d="m 146.87325,3.5 h 3 L 138,23.5 h -3 z" />
+      <path class="voidbg" d="M 161.97443,3.5 H 165 L 153.02556,23.5 H 150 Z" />
+      <path class="voidbg" d="m 176.87325,3.5 h 3 L 168,23.5 h -3 z" />
+      <path class="voidbg" d="M 191.97443,3.5 H 195 L 183.02556,23.5 H 180 Z" />
+      <path class="voidbg" d="m 206.87326,3.5 h 3 L 198,23.5 h -3 z" />
+      <path class="voidbg" d="M 221.97444,3.5 H 225 L 213.02557,23.5 H 210 Z" />
+      <path class="voidbg" d="m 236.87325,3.5 h 3 L 228,23.5 h -3 z" />
+      <path class="voidbg" d="M 251.97444,3.5 H 255 L 243.02557,23.5 H 240 Z" />
+      <path class="voidbg" d="m 266.87325,3.5 h 3 L 258,23.5 h -3 z" />
+      <path class="voidbg" d="M 281.97443,3.5 H 285 L 273.02556,23.5 H 270 Z" />
+      <path class="voidbg" d="m 296.87325,3.5 h 3 L 288,23.5 h -3 z" />
+      <path class="voidbg" d="M 311.97443,3.5 H 315 l -11.97444,20 H 300 Z" />
+      <path class="voidbg" d="m 326.87325,3.5 h 3 L 318,23.5 h -3 z" />
+      <path class="voidbg" d="M 341.97444,3.5 H 345 L 333.02557,23.5 H 330 Z" />
+      <path class="voidbg" d="m 356.87325,3.5 h 3 L 348,23.5 h -3 z" />
+      <path class="voidbg" d="M 371.97444,3.5 H 375 l -11.97443,20 H 360 Z" />
+      <path class="voidbg" d="m 386.87325,3.5 h 3 L 378,23.5 h -3 z" />
+      <path class="voidbg" d="M 401.97443,3.5 H 405 L 393.02556,23.5 H 390 Z" />
+      <path class="voidbg" d="m 416.87325,3.5 h 3 L 408,23.5 h -3 z" />
+      <path class="voidbg" d="M 431.97443,3.5 H 435 L 423.02556,23.5 H 420 Z" />
+      <path class="voidbg" d="m 446.87326,3.5 h 3 L 438,23.5 h -3 z" />
+      <path class="voidbg" d="M 461.97444,3.5 H 465 L 453.02557,23.5 H 450 Z" />
+   </g>
+</svg>

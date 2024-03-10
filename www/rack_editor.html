@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Rack Editor</title>
+
+  <link rel="icon" type="image/x-icon" href="/www/static/icons/favicon.ico">
+  <link rel="stylesheet" href="static/css/basic.css">
+  <link rel="stylesheet" href="static/css/print.css">
+  <link rel="stylesheet" href="static/css/svg.css">
+
+  <script src="static/js/jquery-3.7.1.min.js"></script>
+
+  <script src="static/js/rack_editor/main.js"></script>
+</head>
+<body>
+
+  <div id="topbar">
+    <span>Tool : <span class="display" id="tool-display">blabla</span></span>
+    <span class="separator"></span>
+    <span>Location : <span class="display" id="location-display">RC-0001-B > "equipment b-13"</span>
+  </span>
+    
+  </div>
+
+  <div id="toolbar">
+
+    <div class="toolbar-toplevel" id="toolbar-group_home">
+      <button class="toolbar-toplevel-header toolbar-button">
+        <img src="static/icons/png_512/014-home-page.png">
+        <span>Home</span>
+      </button>
+    </div>
+
+    <div class="toolbar-toplevel toolbar-group" id="toolbar-group_rack">
+      <button class="toolbar-toplevel-header">
+        <img src="static/icons/png_512/011-server.png">
+        <span>Rack</span>
+        <img class="group-arrow" src="static/icons/png_512/007-up.png">
+      </button>
+      
+      <div class="toolbar-toplevel-content">
+        <div class="toolbar-section">
+          <label for="rack_label">Rack label :</label><br>
+          <input type="text" name="rack_label" class="full-width" id="rack_label"><br>
+          
+          <label for="rack_common_name">Rack common name :</label><br>
+          <input type="text" name="rack_common_name" class="full-width" id="rack_common_name">
+        </div>
+        <div class="toolbar-section">
+          <label for="u_number">Number of U :</label><br>
+          <input type="number" name="u_number" class="full-width" id="u_number" value="5" min="1"><br>
+        </div>
+        <div class="toolbar-section">
+          <label for="draw_back">Draw back side : </label>
+          <input type="checkbox" name="draw_back" id="draw_back">
+        </div>
+      </div>
+    </div>
+
+    <div class="toolbar-toplevel toolbar-group" id="toolbar-group_networking">
+      <button class="toolbar-toplevel-header">
+        <img src="static/icons/png_512/010-network.png">
+        <span>Networking</span>
+        <img class="group-arrow" src="static/icons/png_512/007-up.png">
+      </button>
+      <div class="toolbar-toplevel-content hidden">
+        <div class="toolbar-section flex-h">
+            <button class="toolbar-button min-width" id="bt-network-add" title="Add networking device">
+              <img src="static/icons/png_512/008-instagram-stories.png">
+            </button>
+            <button class="toolbar-button min-width" id="bt-network-remove" title="Remove networking device">
+              <img src="static/icons/png_512/017-trash-bin.png">
+            </button>
+            <button class="toolbar-button min-width" id="bt-network-up" title="Device up">
+              <img src="static/icons/png_512/007-up.png">
+            </button>
+            <button class="toolbar-button min-width" id="bt-network-down" title="Device down">
+              <img class="down" src="static/icons/png_512/007-up.png">
+            </button>
+        </div>
+        <div class="toolbar-section">
+          <table>
+            <tr>
+              <td>
+                <button class="toolbar-button min-width" id="bt-focus-..." title="Focus on element">
+                  <img src="static/icons/png_512/015-show.png">
+                </button>
+              </td>
+              <td>USG-FLEX-50</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="toolbar-toplevel toolbar-group" id="toolbar-group_host">
+      <button class="toolbar-toplevel-header">
+        <img src="static/icons/png_512/012-server-1.png">
+        <span>Hosts</span>
+        <img class="group-arrow" src="static/icons/png_512/007-up.png">
+      </button>
+      <div class="toolbar-toplevel-content hidden">
+        <div class="toolbar-section flex-h">
+            <button class="toolbar-button min-width" id="bt-host-add" title="Add host">
+              <img src="static/icons/png_512/008-instagram-stories.png">
+            </button>
+            <button class="toolbar-button min-width" id="bt-host-remove" title="Remove host">
+              <img src="static/icons/png_512/017-trash-bin.png">
+            </button>
+            <button class="toolbar-button min-width" id="bt-host-up" title="Host up">
+              <img src="static/icons/png_512/007-up.png">
+            </button>
+            <button class="toolbar-button min-width" id="bt-host-down" title="Host down">
+              <img class="down" src="static/icons/png_512/007-up.png">
+            </button>
+        </div>
+        <div class="toolbar-section">
+          <table>
+            <tr>
+              <td>
+                <button class="toolbar-button min-width" id="bt-stop-focus" title="Focus on element">
+                  <img src="static/icons/png_512/015-show.png">
+                </button>
+              </td>
+              <td>USG-FLEX-50</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="toolbar-toplevel toolbar-group" id="toolbar-group_link">
+      <button class="toolbar-toplevel-header">
+        <img src="static/icons/png_512/004-ethernet.png">
+        <span>Links</span>
+        <img class="group-arrow" src="static/icons/png_512/007-up.png">
+      </button>
+      <div class="toolbar-toplevel-content hidden">
+        <p>TODO</p>
+      </div>
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+  <div id="main-area">
+    <svg id="front-drawing"></svg>
+    <svg id="back-drawing"></svg>
+  </div>
+
+
+
+  <template id="generic-popup">
+    <div class="popup-wrapper">
+      <div class="popup">
+        <h1>une popup</h1>
+        <p>hello</p>
+      </div>
+    </div>
+  </template>
+
+</body>
+</html>

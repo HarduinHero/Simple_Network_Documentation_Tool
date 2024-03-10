@@ -1,0 +1,9 @@
+svg .solid {
+    fill: black;
+}
+svg .voidbg {
+    fill: rgb(177, 177, 177);
+}
+svg .marking {
+    fill: white;
+}

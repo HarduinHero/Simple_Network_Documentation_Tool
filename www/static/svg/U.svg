@@ -1,0 +1,35 @@
+<svg
+   width="500.80"
+   height="88.9"
+   viewBox="0 0 500.80 88.9">
+   <g>
+      <rect class="voidbg"    width="500.8"  height="44.45" x="0"      y="0" />
+      <rect class="solid"     width="25.4"   height="44.45" x="475.4"  y="0" />
+      <rect class="marking"   width="4.76"   height="0.4"   x="489.64" y="44.05" />
+      <rect class="voidbg"    width="9.52"   height="9.52"  x="476.99" y="33.34" />
+      <rect class="voidbg"    width="9.52"   height="9.52"  x="476.99" y="17.465" />
+      <rect class="voidbg"    width="9.52"   height="9.52"  x="476.99" y="1.59" />
+      <rect class="marking"   width="4.76"   height="0.4"   x="489.64" y="0" />
+      <rect class="solid"     width="25.4"   height="44.45" x="0"      y="0" />
+      <rect class="marking"   width="4.76"   height="0.4"   x="6.4"    y="0" />
+      <rect class="marking"   width="4.76"   height="0.4"   x="6.4"    y="44.05" />
+      <rect class="voidbg"    width="9.52"   height="9.52"  x="14.29"  y="33.34" />
+      <rect class="voidbg"    width="9.52"   height="9.52"  x="14.29"  y="17.465" />
+      <rect class="voidbg"    width="9.52"   height="9.52"  x="14.29"  y="1.59" />
+   </g>
+   <g transform="translate(0, 44.45)">
+      <rect class="voidbg"    width="500.8" height="44.45" x="0"      y="0" />
+      <rect class="solid"     width="25.4"  height="44.45" x="475.4"  y="0" />
+      <rect class="marking"   width="4.76"  height="0.4"   x="489.64" y="44.05" />
+      <rect class="voidbg"    width="9.52"  height="9.52"  x="476.99" y="33.34" />
+      <rect class="voidbg"    width="9.52"  height="9.52"  x="476.99" y="17.465" />
+      <rect class="voidbg"    width="9.52"  height="9.52"  x="476.99" y="1.59" />
+      <rect class="marking"   width="4.76"  height="0.4"   x="489.64" y="0" />
+      <rect class="solid"     width="25.4"  height="44.45" x="0"      y="0" />
+      <rect class="marking"   width="4.76"  height="0.4"   x="6.4"    y="0" />
+      <rect class="marking"   width="4.76"  height="0.4"   x="6.4"    y="44.05" />
+      <rect class="voidbg"    width="9.52"  height="9.52"  x="14.29"  y="33.34" />
+      <rect class="voidbg"    width="9.52"  height="9.52"  x="14.29"  y="17.465" />
+      <rect class="voidbg"    width="9.52"  height="9.52"  x="14.29"  y="1.59" />
+   </g>
+</svg>
