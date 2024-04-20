@@ -1,0 +1,7 @@
+:root{
+    --default-text : black;
+    --default-background: white;
+    --border: black;
+    --light-accent : rgb(240, 240, 240);
+    --strong-accent : rgb(177, 177, 177);
+}

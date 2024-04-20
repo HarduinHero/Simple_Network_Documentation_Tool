@@ -7,13 +7,13 @@
   <title>Rack Editor</title>
 
   <link rel="icon" type="image/x-icon" href="/www/static/icons/favicon.ico">
+  <link rel="stylesheet" href="static/css/colors.css">
   <link rel="stylesheet" href="static/css/basic.css">
   <link rel="stylesheet" href="static/css/print.css">
   <link rel="stylesheet" href="static/css/svg.css">
-
   <script src="static/js/jquery-3.7.1.min.js"></script>
-
-  <script src="static/js/rack_editor/main.js"></script>
+  <script src="static/js/svg_drawing.js"></script>
+  <script src="static/js/rack_editor.js"></script>
 </head>
 <body>
 
@@ -28,7 +28,7 @@
   <div id="toolbar">
 
     <div class="toolbar-toplevel" id="toolbar-group_home">
-      <button class="toolbar-toplevel-header toolbar-button">
+      <button class="toolbar-toplevel-header toolbar-button" id="home">
         <img src="static/icons/png_512/014-home-page.png">
         <span>Home</span>
       </button>
@@ -143,20 +143,23 @@
       </div>
     </div>
 
-
-
-
-
-
-
   </div>
 
   <div id="main-area">
-    <svg id="front-drawing"></svg>
-    <svg id="back-drawing"></svg>
+
+    <div id="generic-drawings">
+      <div id="front">
+        <h2>Front</h2>
+        <svg id="generic-rack-front" xmlns="http://www.w3.org/2000/svg" width="500.8" height="311.15000000000003" viewbox="0 0 500.8 311.15000000000003"></svg>
+      </div>
+      <div id="back">
+        <h2>Back</h2>
+        <svg id="generic-rack-back" xmlns="http://www.w3.org/2000/svg" width="500.8" height="311.15000000000003" viewbox="0 0 500.8 311.15000000000003"></svg>
+      </div>
+    </div>
+
+
   </div>
-
-
 
   <template id="generic-popup">
     <div class="popup-wrapper">

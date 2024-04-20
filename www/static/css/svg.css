@@ -1,9 +1,32 @@
 svg .solid {
     fill: black;
 }
-svg .voidbg {
-    fill: rgb(177, 177, 177);
-}
 svg .marking {
     fill: white;
+}
+svg .marking_border {
+    stroke-width: 0.3;
+    stroke: black;
+    fill: white;
+}
+svg .voidbg {
+    fill: rgb(200, 200, 200);
+}
+svg .border {
+    stroke: 1px solid black;
+}
+svg .device {
+    fill: white;
+    stroke-width: 1;
+    stroke: black;
+}
+svg .interface {
+    
+}
+svg .interface:hover .solid{
+    fill: red;
+}
+
+svg .smallfont {
+    font: bolder 5px Consolas, monaco, monospace;
 }

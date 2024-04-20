@@ -5,4 +5,10 @@
     #topbar {
         display: none;
     }
+    #main-area {
+        position: fixed;
+        left: 0;
+        top: 0;
+        overflow: visible;
+    }
 }

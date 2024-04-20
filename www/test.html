@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/css/svg.css">
+    <script src="static/js/jquery-3.7.1.min.js"></script>
+    <script src="static/js/svg_drawing.js"></script>
+</head>
+<body>
+    <svg id="svg" xmlns="http://www.w3.org/2000/svg" width="500.8" height="311.15000000000003" viewbox="0 0 500.8 311.15000000000003"></svg>
+    <script>
+
+        device_data = {
+            "label" : "A-002-SW1",
+            "common_label" : "Switch POE des camera du bureau 2 batiment A.",
+            "description" : "Dans la baie à coté du bureau de michel.",
+            "model" : "marqueXX : SW8-POE+2c",
+            "u_size" : 1,
+            "auto_draw" : {
+                "column_group_width" : [4, 4, 2],
+                "column_interfaces_patern" : ["-", "-", "W"]
+            },
+            "interfaces" : [
+                {"type" : "eth", "id" :  1, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                {"type" : "eth", "id" :  2, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                {"type" : "eth", "id" :  3, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                {"type" : "eth", "id" :  4, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                {"type" : "eth", "id" :  5, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                {"type" : "eth", "id" :  6, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                {"type" : "eth", "id" :  7, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                {"type" : "eth", "id" :  8, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                {"type" : "eth", "id" :  9, "speeds" : [10, 100, 1000]},
+                {"type" : "sfp", "id" :  9, "speeds" : [10, 100, 1000]},
+                {"type" : "eth", "id" : 10, "speeds" : [10, 100, 1000]},
+                {"type" : "sfp", "id" : 10, "speeds" : [10, 100, 1000]},
+            ]
+        }
+
+        svg_draw_rack($('#svg'), 5);
+        svg_draw_device($('#svg'), device_data, 1);
+        svg_draw_device($('#svg'), device_data, 4);
+    </script>
+</body>
+</html>

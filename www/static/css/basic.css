@@ -7,19 +7,6 @@ body, html {
     display: flex;
     flex-direction: row;
 }
-/************************/
-/******** COLORS ********/
-/************************/
-
-:root{
-    --default-text : black;
-    --default-background: white;
-    --border: black;
-    --light-accent : rgb(240, 240, 240);
-    --strong-accent : rgb(177, 177, 177);
-}
-
-
 
 /***********************/
 /******* TOOLBAR *******/
@@ -165,4 +152,13 @@ img.down {
     top: 0;
     right: 0;
     bottom: 0;
+    overflow: scroll;
+    padding: 20px;
+}
+#generic-drawings {
+    display: flex;
+    justify-content: space-evenly;
+}
+#generic-drawings h2 {
+    text-align: center;
 }
