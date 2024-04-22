@@ -18,23 +18,31 @@
             "description" : "Dans la baie à coté du bureau de michel.",
             "model" : "marqueXX : SW8-POE+2c",
             "u_size" : 1,
-            "auto_draw" : {
-                "column_group_width" : [4, 4, 2],
-                "column_interfaces_patern" : ["-", "-", "W"]
-            },
-            "interfaces" : [
-                {"type" : "eth", "id" :  1, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
-                {"type" : "eth", "id" :  2, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
-                {"type" : "eth", "id" :  3, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
-                {"type" : "eth", "id" :  4, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
-                {"type" : "eth", "id" :  5, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
-                {"type" : "eth", "id" :  6, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
-                {"type" : "eth", "id" :  7, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
-                {"type" : "eth", "id" :  8, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
-                {"type" : "eth", "id" :  9, "speeds" : [10, 100, 1000]},
-                {"type" : "sfp", "id" :  9, "speeds" : [10, 100, 1000]},
-                {"type" : "eth", "id" : 10, "speeds" : [10, 100, 1000]},
-                {"type" : "sfp", "id" : 10, "speeds" : [10, 100, 1000]},
+            "interface_groups" : [
+                {
+                    "patern" : "-", "interfaces" : [
+                        {"type" : "eth", "id" :  1, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                        {"type" : "eth", "id" :  2, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                        {"type" : "eth", "id" :  3, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                        {"type" : "eth", "id" :  4, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]}        
+                    ]
+                },
+                {
+                    "patern" : "-", "interfaces" : [
+                        {"type" : "eth", "id" :  5, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                        {"type" : "eth", "id" :  6, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                        {"type" : "eth", "id" :  7, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]},
+                        {"type" : "eth", "id" :  8, "speeds" : [10, 100, 1000], "poe" : "out", "vlans" : [42]}
+                    ]
+                },
+                {
+                    "patern" : "W", "interfaces" : [
+                        {"type" : "eth", "id" :  9, "speeds" : [10, 100, 1000]},
+                        {"type" : "sfp", "id" :  9, "speeds" : [10, 100, 1000]},
+                        {"type" : "eth", "id" : 10, "speeds" : [10, 100, 1000]},
+                        {"type" : "sfp", "id" : 10, "speeds" : [10, 100, 1000]}
+                    ]
+                }
             ]
         }
 

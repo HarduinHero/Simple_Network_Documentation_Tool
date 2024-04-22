@@ -95,9 +95,9 @@ function svg_draw_rack (svg_object, u_size) {
     $(svg_object).html(content);
 }
 
-function svg_interface_string (device_name, port_type, id, x, y, on_top=false) {
-    content  = `<g id="${device_name}-${port_type}-${id}" class="interface" transform="translate(${x}, ${y})">`;  
-    content += INTERFACES_TYPES[port_type].drawing;
+function svg_interface_string (device_name, interface_type, id, x, y, on_top=false) {
+    content  = `<g id="${device_name}-${interface_type}-${id}" class="interface" transform="translate(${x}, ${y})">`;  
+    content += INTERFACES_TYPES[interface_type].drawing;
 
     let lable_x = (RJ45.width - 7) / 2
     let label_y = on_top ? (-7.5) : (RJ45.height+1.5)
@@ -118,12 +118,23 @@ function svg_draw_device (svg_object, device_data, y_position) {
     // Group index initialisation
     let group_index = 0;
 
-    // next_group_start is used to determine at what interface index
-    // the group index change
-    if (device_data.auto_draw.column_interfaces_patern[group_index] == '-') {
-        var next_group_start = device_data.auto_draw.column_group_width[group_index];
-    } else {
-        var next_group_start = 2*device_data.auto_draw.column_group_width[group_index];
+    // // next_group_start is used to determine at what interface index
+    // // the group index change
+    // if (device_data.auto_draw.column_interfaces_patern[group_index] == '-') {
+    //     var next_group_start = device_data.auto_draw.column_group_width[group_index];
+    // } else {
+    //     var next_group_start = 2*device_data.auto_draw.column_group_width[group_index];
+    // }
+
+    for (let group_index = 0; group_index < device_data.interface_groups.length; group_index++) {
+        const current_group  = device_data.interface_groups[group_index];
+        const current_patern = current_group.patern;
+
+        for (let interface_index = 0; interface_index < current_group.interfaces.length; interface_index++) {
+            const current_int = current_group.interfaces[interface_index];
+            console.log(current_int);
+        }
+        console.log(current_patern);
     }
 
     // Interface drawing
