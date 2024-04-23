@@ -9,6 +9,15 @@ svg .marking_border {
     stroke: black;
     fill: white;
 }
+svg .combo rect.marking_border {
+    fill: black;
+}
+svg .interface.combo rect.marking_border {
+    fill: black;
+}
+svg .interface.combo text {
+    fill: white;
+}
 svg .voidbg {
     fill: rgb(200, 200, 200);
 }
@@ -19,9 +28,6 @@ svg .device {
     fill: white;
     stroke-width: 1;
     stroke: black;
-}
-svg .interface {
-    
 }
 svg .interface:hover .solid{
     fill: red;

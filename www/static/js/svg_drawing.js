@@ -95,115 +95,92 @@ function svg_draw_rack (svg_object, u_size) {
     $(svg_object).html(content);
 }
 
-function svg_interface_string (device_name, interface_type, id, x, y, on_top=false) {
-    content  = `<g id="${device_name}-${interface_type}-${id}" class="interface" transform="translate(${x}, ${y})">`;  
+function svg_interface_string (device_name, interface_type, id, x, y, on_top=false, color_inversed_label=false) {
+    content  = `<g id="${device_name}-${interface_type}-${id}" class="interface${color_inversed_label ? ' combo' : ''}" transform="translate(${x}, ${y})">`;  
     content += INTERFACES_TYPES[interface_type].drawing;
 
     let lable_x = (RJ45.width - 7) / 2
     let label_y = on_top ? (-7.5) : (RJ45.height+1.5)
     content += `<rect class="marking_border" x="${lable_x}" y="${label_y}" height="6" width="7"/>`;
-    content += `<text class="smallfont solid" x="${lable_x+0.5}" y="${label_y+5}">${id<10 ? '0'+id : id}</text>`;
+    content += `<text class="smallfont solid" x="${lable_x+0.75}" y="${label_y+4.7}">${id<10 ? '0'+id : id}</text>`;
     content += '</g>';
     return content;
 }
 
-function svg_draw_device (svg_object, device_data, y_position) {
+function svg_device_string (device_data, force_redraw=false) {
 
-    // Initialaze interfaces origine
-    let interfaces_string = '';
-    let y_top_line = 0;
-    let y_bot_line = 0 + RJ45.height;
-    let x_int = 0; // redefined after parameter calculation for index=0
+    if (device_data.svg_drawing == null || force_redraw) {
 
-    // Group index initialisation
-    let group_index = 0;
+        // Initialaze interfaces origine
+        let interfaces_string = '';
+        let y_top_line = 0;
+        let y_bot_line = 0 + RJ45.height;
+        let x_int = 0; // redefined after parameter calculation for index=0
 
-    // // next_group_start is used to determine at what interface index
-    // // the group index change
-    // if (device_data.auto_draw.column_interfaces_patern[group_index] == '-') {
-    //     var next_group_start = device_data.auto_draw.column_group_width[group_index];
-    // } else {
-    //     var next_group_start = 2*device_data.auto_draw.column_group_width[group_index];
-    // }
-
-    for (let group_index = 0; group_index < device_data.interface_groups.length; group_index++) {
-        const current_group  = device_data.interface_groups[group_index];
-        const current_patern = current_group.patern;
-
-        for (let interface_index = 0; interface_index < current_group.interfaces.length; interface_index++) {
-            const current_int = current_group.interfaces[interface_index];
-            console.log(current_int);
+        // Identify combo interfaces id by iterating interfaces
+        let combo_interfaces = new Set();
+        let viewed_id = new Set();
+        for (let group_index = 0; group_index < device_data.interface_groups.length; group_index++) {
+            const current_group  = device_data.interface_groups[group_index];
+            for (let interface_index = 0; interface_index < current_group.interfaces.length; interface_index++) {
+                const current_int = device_data.interface_groups[group_index].interfaces[interface_index];
+                if (viewed_id.has(current_int.id)) {
+                    combo_interfaces.add(current_int.id);
+                } else {
+                    viewed_id.add(current_int.id);
+                }
+            }
         }
-        console.log(current_patern);
-    }
+    
+        // Iterating interfaces to draw them 
+        for (let group_index = 0; group_index < device_data.interface_groups.length; group_index++) {
+            const current_group  = device_data.interface_groups[group_index];
+            const current_patern = current_group.patern;
 
-    // Interface drawing
-    for (let index = 0; index < device_data.interfaces.length; index++) {
-        const current_int = device_data.interfaces[index];
-
-        // Group update
-        if (index == next_group_start) {
-            group_index++;
+            for (let interface_index = 0; interface_index < current_group.interfaces.length; interface_index++) {
+                const current_int = current_group.interfaces[interface_index];
+    
+                // Defining interfaces coordinates from group patern
+                if (current_patern == '-') {
+                    x_int += RJ45.width;
+                    y = y_bot_line;
+                    on_top = false;
+                } else if (current_patern == 'M') {
+                    if (interface_index %2 == 0) {
+                        y = y_bot_line;
+                        on_top = false;
+                        x_int += RJ45.width;
+                    } else {
+                        y = y_top_line;
+                        on_top = true;
+                    }
+                } else if (current_patern == 'W') {
+                    if (interface_index %2 == 0) {
+                        y = y_top_line;
+                        on_top = true;
+                        x_int += RJ45.width;
+                    } else {
+                        y = y_bot_line;
+                        on_top = false;
+                    }
+                }
+                // Add interface string with parameters
+                is_combo = combo_interfaces.has(current_int.id);
+                interfaces_string += svg_interface_string(device_data.label, current_int.type, current_int.id, x_int, y, on_top, is_combo);
+            }
             x_int += GROUP_SPACING;
-            if (device_data.auto_draw.column_interfaces_patern[group_index] == '-') {
-                next_group_start += device_data.auto_draw.column_group_width[group_index];
-            } else {
-                next_group_start += 2*device_data.auto_draw.column_group_width[group_index];
-            }
-            console.log(next_group_start)
         }
-        
-        // Edit params from patern
-        if (device_data.auto_draw.column_interfaces_patern[group_index] == '-') {
-            x_int += RJ45.width;
-            y = y_bot_line
-            on_top = false;
-        } else if (device_data.auto_draw.column_interfaces_patern[group_index] == 'Z') {
-            if (index %2 == 0) {
-                y = y_bot_line;
-                on_top = false
-                x_int += RJ45.width;
-            } else {
-                y = y_top_line;
-                on_top = true
-            }
-        } else if (device_data.auto_draw.column_interfaces_patern[group_index] == 'M') {
-            if (index %2 == 0) {
-                y = y_bot_line;
-                on_top = false
-                x_int += RJ45.width;
-            } else {
-                y = y_top_line;
-                on_top = true
-            }
-        } else if (device_data.auto_draw.column_interfaces_patern[group_index] == 'W') {
-            if (index %2 == 0) {
-                y = y_top_line;
-                on_top = true
-                x_int += RJ45.width;
-            } else {
-                y = y_bot_line;
-                on_top = false
-            }
-        }
-        // Redefining initial x origin of interfaces
-        if (index == 0) {
-            x_int = 0;
-        }
-        // Add interface string with parameters
-        interfaces_string += svg_interface_string(device_data.label, current_int.type, current_int.id, x_int, y, on_top);
+    
+        let height = device_data.u_size * U_HEIGHT;
+        // centering the interface group
+        let y_g_interface = 9.125;
+        let x_g_interface = (U_DEVICE_WIDTH-x_int)/2;
+    
+        content += `<rect class="device" width="${U_DEVICE_WIDTH}" height="${height}" x="0" y="0"/>`;
+        content += `<g transform="translate(${x_g_interface}, ${y_g_interface})">${interfaces_string}</g>`;
+        return content;
+
+    } else {
+        return device_data.svg_drawing;
     }
-
-    let x_device = DEVICE_X_POS;
-    let y_device = y_position * U_HEIGHT + U_HEIGHT;
-    let height = device_data.u_size * U_HEIGHT;
-    let y_g_interface = y_device+9.125;
-    let x_g_interface = (U_DEVICE_WIDTH-x_int)/2;
-    console.log(x_int)
-
-    content  = '<g>';
-    content += `<rect class="device" width="${U_DEVICE_WIDTH}" height="${height}" x="${x_device}" y="${y_device}"/>`;
-    content += `<g transform="translate(${x_g_interface}, ${y_g_interface})">${interfaces_string}</g>`;
-    content += '</g>';
-    $(svg_object).html($(svg_object).html() + content)
 }
