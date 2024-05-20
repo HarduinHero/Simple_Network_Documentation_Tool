@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>main_window</class>
+ <widget class="QMainWindow" name="main_window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>970</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">SNDT : Simple Network Documentation Tool</string>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
+  </property>
+  <widget class="QWidget" name="central_widget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>6</number>
+    </property>
+    <property name="leftMargin">
+     <number>9</number>
+    </property>
+    <property name="topMargin">
+     <number>9</number>
+    </property>
+    <property name="rightMargin">
+     <number>9</number>
+    </property>
+    <property name="bottomMargin">
+     <number>9</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="nav_tree_frame">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>250</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="nav_tree_frame_layout">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetNoConstraint</enum>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="editing_frame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout"/>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>970</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="locale">
+    <locale language="English" country="UnitedStates"/>
+   </property>
+   <widget class="QMenu" name="menu_file">
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
+    </property>
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menu_load_example_project">
+     <property name="title">
+      <string>Load example project</string>
+     </property>
+    </widget>
+    <addaction name="action_new_project"/>
+    <addaction name="action_open_project"/>
+    <addaction name="menu_load_example_project"/>
+    <addaction name="separator"/>
+    <addaction name="action_save"/>
+    <addaction name="separator"/>
+    <addaction name="action_settings"/>
+   </widget>
+   <widget class="QMenu" name="menu_help">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="action_user_guide"/>
+    <addaction name="action_about"/>
+   </widget>
+   <widget class="QMenu" name="menu_display">
+    <property name="title">
+     <string>Display</string>
+    </property>
+    <widget class="QMenu" name="menu_rack">
+     <property name="title">
+      <string>Rack</string>
+     </property>
+     <addaction name="action_all_rack"/>
+    </widget>
+    <widget class="QMenu" name="menu_device">
+     <property name="title">
+      <string>Device</string>
+     </property>
+     <addaction name="action_show_all_device"/>
+     <addaction name="action_show_not_in_rack_device"/>
+    </widget>
+    <addaction name="menu_rack"/>
+    <addaction name="menu_device"/>
+    <addaction name="separator"/>
+    <addaction name="action_display_device_model"/>
+    <addaction name="action_display_device_type"/>
+    <addaction name="action_display_interface_type"/>
+   </widget>
+   <addaction name="menu_file"/>
+   <addaction name="menu_display"/>
+   <addaction name="menu_help"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="locale">
+    <locale language="English" country="UnitedStates"/>
+   </property>
+  </widget>
+  <action name="action_user_guide">
+   <property name="text">
+    <string>User guide</string>
+   </property>
+  </action>
+  <action name="action_about">
+   <property name="text">
+    <string>About SNDT</string>
+   </property>
+  </action>
+  <action name="action_new_project">
+   <property name="text">
+    <string>New project</string>
+   </property>
+  </action>
+  <action name="action_open_project">
+   <property name="text">
+    <string>Open project</string>
+   </property>
+  </action>
+  <action name="action_devices_types">
+   <property name="text">
+    <string>Device types</string>
+   </property>
+  </action>
+  <action name="action_interface_types">
+   <property name="text">
+    <string>Interface types</string>
+   </property>
+  </action>
+  <action name="action_edit_device_model">
+   <property name="text">
+    <string>Edit</string>
+   </property>
+  </action>
+  <action name="action_import_device_model">
+   <property name="text">
+    <string>Import</string>
+   </property>
+  </action>
+  <action name="action_display_device_model">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Device model</string>
+   </property>
+  </action>
+  <action name="action_display_device_type">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Device type</string>
+   </property>
+  </action>
+  <action name="action_display_interface_type">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Interface type</string>
+   </property>
+  </action>
+  <action name="action_all_rack">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>All</string>
+   </property>
+  </action>
+  <action name="action_show_all_device">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>All</string>
+   </property>
+  </action>
+  <action name="action_show_not_in_rack_device">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Not in rack</string>
+   </property>
+  </action>
+  <action name="action_settings">
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
+  <action name="action_save">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="action_save_as">
+   <property name="text">
+    <string>Save as</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="text">
+    <string>Undo</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
