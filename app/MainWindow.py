@@ -69,11 +69,9 @@ class MainWindow(QMainWindow, Ui_main_window) :
             self.action_list_load_project.append(current_action)
 
     def set_editing_frame(self, new_frame:Union[RackEdit, DeviceEdit, None]) :
-        if new_frame is None :
-            pass
-        else :
-            if self.current_editing_frame is not None :
-                self.current_editing_frame.setParent(None)
+        if self.current_editing_frame is not None :
+            self.current_editing_frame.setParent(None)
+        if new_frame is not None :
             self.current_editing_frame = new_frame
             self.current_editing_frame.setParent(self.editing_frame)
             self.current_editing_frame.show()
@@ -114,9 +112,7 @@ class MainWindow(QMainWindow, Ui_main_window) :
         item_value = e.data(1, Qt.ItemDataRole.UserRole)
 
         if isinstance(item_value, Rack) :
-            print(item_value, 'Rack')
             self.set_editing_frame(RackEdit(item_value))
             
         if isinstance(item_value, Device) :
-            print(item_value, 'Device')
             self.set_editing_frame(DeviceEdit(item_value))
