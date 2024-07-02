@@ -1,0 +1,25 @@
+<sndp sndt_version='0.0.0' lang='fr' encoding='utf-8'>
+    <tree_structure>
+        <view label="Infrastructures logiques">
+            <class id="1" label="Serveur Logique" type="VDEVICE">
+                field
+            </class>
+        </view>
+        <view label="Infrastructures physiques">
+            <class id="3" label="Serveur physique" type="PDEVICE"/>
+            <class id="4" label="Site géographique" type="LOCATION"/>
+            <class id="5" label="Baie" type="RACK"/>
+            <class id="6" label="Poste de travail" type="PDEVICE"/>
+        </view>
+    </tree_structure>
+    <data>
+
+
+
+    <data>
+    <relation>
+        <rel>
+
+    <relations>
+
+</sndp>

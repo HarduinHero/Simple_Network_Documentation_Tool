@@ -80,15 +80,15 @@ Cet outil sera développé en anglais (code, BD) et son interface sera disponibl
 L'outil se présente sou la forme d'une application GUI portable. +
 L'application est réalisée en python, la librairie graphique est PyQt6. Les fichiers d'interface sont réalisés avec QtCreator. +
 
-=== Typologie de fichiers
-==== Fichier de projet
-  .zip #TODO
+== Format de fichiers
 
-==== Fichier de données
-  SQLite #TODO
+Un projet est stocké sous la forme d'un fichier xml d'extension `.sndp` [simple network documentation project].
 
-==== Fichier de model
-  .json #TODO
+..sndp file example
+[source, xml]
+----
+<sndp sndt_version="0.0.0">
 
-==== Fichier de vue
-  .json #TODO
+</sndp>
+----
+
