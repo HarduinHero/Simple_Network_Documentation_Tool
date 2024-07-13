@@ -88,7 +88,8 @@ Un projet est stocké sous la forme d'un fichier xml d'extension `.sndp` [simple
 [source, xml]
 ----
 <sndp sndt_version="0.0.0">
-
+  <tree_structure>
+  </tree_structure>
 </sndp>
 ----
 
