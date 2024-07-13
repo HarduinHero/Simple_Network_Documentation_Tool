@@ -65,7 +65,7 @@ Exemple : Infrastructures physiques du batiment C, Infrastructure logique liée 
 * **Gérer** le versionement des schémas (titre, date, numéro de version, légende).
 * **Exporter** les schémas dans des formats de lecture accéptés par les outils classiques de burautique (.pdf, .html)
 
-Posseder toutes les informations d'inventaire et de topographie d'un SI permet également de réaliser des traitements automatisés, Il s'agit ici de propositions optionelles.
+Posseder toutes les informations d'inventaire et de topographie d'un SI permet également de réaliser des traitements automatisés. Il s'agit ici de propositions optionelles.
 
 * Recherche de bottle neck de vitesses de transfer.
 * Créer un plan de configuration VLAN des switch à partir d'un liste d'attribution de VLAN aux host.
@@ -73,12 +73,105 @@ Posseder toutes les informations d'inventaire et de topographie d'un SI permet �
 
 == Langues et internationalisation
 
-Cet outil sera développé en anglais (code, BD) et son interface sera disponible en Anglais et Français.
+Cet outil sera développé en anglais (code, fichiers) et son interface sera disponible en Anglais et Français.
 
 == Technologies
 
-L'outil se présente sou la forme d'une application GUI portable. +
+L'outil se présente sous la forme d'une application GUI portable. +
 L'application est réalisée en python, la librairie graphique est PyQt6. Les fichiers d'interface sont réalisés avec QtCreator. +
+
+== Schémas et vues
+
+Les vues définies dans le guide de l'ANSSI permettent de classer les différents objets en catégories. La cartographie en elle-même se materialise par un enssemble de schémas (définis dans la liste ci dessous), certains de ces schémas sont la représentation d'un objet en lui-même (rack, emplacement) pour les autres, ils sont représentés commes des objets à part entère.
+
+* Schéma de Baie/Rack
+* Schéma d'emplacement/site/batiment
+* Schéma de connexion physique
+* Schéma logique
+
+Il est possible de naviquer entre les schémas grace aux liens établis entre les différent objets.
+
+== Représentation des données
+
+L'application définit un certain nombre de classes d'objets primitives depuis lesquelles un utilisateur peut créer d'autres objets en fonction de ses besoins en y ajoutant des atributs. C'est classes primitives définissent le comportement des objets déclinés.
+
+Ces classes primitivent fournissent toutent des attributs de base.
+
+.Diagramme de classe des classes primitives
+image::documentation/Classes primitives.svg[400, 400, align=center]
+
+.Classes primitives et dérivés possibles (Guide ANSSI, Annexe 1)
+|===
+|Primitive |Guide ANSSI
+
+|Rack
+a|.Tableau 6 : Vue des infrastructures physiques
+....
+Baie
+....
+
+|Location
+a|.Tableau 6 : Vue des infrastructures physiques
+....
+Site
+Bâtiment
+Sale
+....
+
+|PDevice
+a|.Tableau 6 : Vue des infrastructures physiques
+....
+Serveur physique
+Poste de travail
+Infrastructure de stockage
+Périphérique
+Téléphone
+Commutateur physique (switch)
+Routeur physique
+Borne wifi
+Equipement de sécurité physique
+....
+
+|VDevice
+a|.Tableau 5 : Vue des infrastructures logiques
+....
+Passerelle d'entrée depuis l'extérieur
+Entité extérieure connectée
+Commutateur (switch)
+Routeur
+Équipement de sécurité
+Serveur DHCP
+Serveur DNS
+Serveur logique
+....
+
+|Network
+a|.Tableau 5 : Vue des infrastructures logiques
+....
+Réseau
+Sous-réseau
+....
+.Tableau 6 : Vue des infrastructures physiques
+....
+WAN (Wide Area Network)
+MAN (Metropolitan Area Network)
+LAN (Local Area Network)
+VLAN (Virtual Area Network)
+....
+
+|Link
+a|
+....
+Cable ethernet X Gb
+Cable fibre X Gb
+Liaison série X baud
+Liaison paralelle
+Liaison ISCSI
+Liaison IPSEC
+....
+|===
+
+
 
 == Format de fichiers
 

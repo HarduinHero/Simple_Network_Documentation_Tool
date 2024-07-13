@@ -1,0 +1,19 @@
+@startuml Classes primitives
+hide empty member
+
+Rack *-- Interface
+Location *-- Interface
+PDevice *-- Interface
+VDevice *-- Interface
+
+Rack "*" -- "1" Location : physicaly in >
+Location "*" -- "1" Location : physicaly in >
+PDevice "*" -- "1" Location : physicaly in >
+PDevice "*" -- "0..1" Rack : physicaly in >
+VDevice "*" -- "1" PDevice : supported by >
+VDevice "*" -- "1" VDevice : supported by >
+VDevice "*" -- "*" Network : in >
+"Interface" "1" -- "1" "Interface"
+(Interface, Interface) . Link
+
+@enduml
