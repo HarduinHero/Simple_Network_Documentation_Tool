@@ -1,14 +1,9 @@
 from typing import Optional, Union
 
-from DeviceEdit import DeviceEdit
-from model.Device import Device
-from model.LocalFile import EXAMPLES
 from model.Project import Project
-from model.Rack import Rack
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QFileDialog, QMainWindow, QTreeWidgetItem
-from RackEdit import RackEdit
 from ui.mainwindow import Ui_main_window
 from NavigationTree import NavigationTree
 
@@ -16,14 +11,14 @@ ERROR_TIMEOUT = 2500
 
 class MainWindow(QMainWindow, Ui_main_window) :
 
-    def __init__(self, *args, obj=None, open_project=None, **kwargs) :
+    def __init__(self, *args, obj=None, project_path:Optional[str]=None, **kwargs) :
         super(MainWindow, self).__init__(*args, **kwargs)
         self.setupUi(self)
 
         # Open with command arg
         self.current_project : Optional[Project]
-        if open_project is not None :
-            self.current_project = Project(open_project)
+        if project_path is not None :
+            self.current_project = Project.open_project(project_path)
         else :
             self.current_project = None
 
@@ -59,6 +54,7 @@ class MainWindow(QMainWindow, Ui_main_window) :
 
     def init_menu_load_example_project(self) :
         self.action_list_load_project = []
+        EXAMPLES = ['a', 'b']
         for ex in EXAMPLES :
             current_action = QAction(parent=self)
             current_action.setObjectName(f'action_{ex}')
@@ -68,13 +64,13 @@ class MainWindow(QMainWindow, Ui_main_window) :
             self.menu_load_example_project.addAction(current_action)
             self.action_list_load_project.append(current_action)
 
-    def set_editing_frame(self, new_frame:Union[RackEdit, DeviceEdit, None]) :
-        if self.current_editing_frame is not None :
-            self.current_editing_frame.setParent(None)
-        if new_frame is not None :
-            self.current_editing_frame = new_frame
-            self.current_editing_frame.setParent(self.editing_frame)
-            self.current_editing_frame.show()
+    # def set_editing_frame(self, new_frame:Union[RackEdit, DeviceEdit, None]) :
+    #     if self.current_editing_frame is not None :
+    #         self.current_editing_frame.setParent(None)
+    #     if new_frame is not None :
+    #         self.current_editing_frame = new_frame
+    #         self.current_editing_frame.setParent(self.editing_frame)
+    #         self.current_editing_frame.show()
 
 
 
@@ -92,17 +88,17 @@ class MainWindow(QMainWindow, Ui_main_window) :
     
     def action_new_project_handler(self) :
         filename = QFileDialog.getSaveFileName(self, 'New project')[0]
-        self.current_project = Project.new_project(filename)
+        self.current_project = Project.new_project(filename, 'test')
         self.navigation_tree.update_ui()
 
     def action_open_project_handler(self) :
         filename = QFileDialog.getOpenFileName(self, 'Open project')[0]
-        self.current_project = Project(filename)
+        self.current_project = Project.open_project(filename)
         self.navigation_tree.update_ui()  
 
     def action_load_example_project(self) :
         if self.current_project == None :
-            self.statusBar().showMessage('Error : you have to create a new project first !', ERROR_TIMEOUT)
+            self.statusBar().showMessage('Error : you have to create a new project first !', ERROR_TIMEOUT) # type: ignore
         else :
             action = self.sender()
             #TODO self.current_project.load_example_project(action.text())
@@ -110,9 +106,10 @@ class MainWindow(QMainWindow, Ui_main_window) :
 
     def select_element_in_nav_tree_handler(self, e:QTreeWidgetItem) :
         item_value = e.data(1, Qt.ItemDataRole.UserRole)
+        print('NotImplemented')
 
-        if isinstance(item_value, Rack) :
-            self.set_editing_frame(RackEdit(item_value))
+        # if isinstance(item_value, Rack) :
+        #     self.set_editing_frame(RackEdit(item_value))
             
-        if isinstance(item_value, Device) :
-            self.set_editing_frame(DeviceEdit(item_value))
+        # if isinstance(item_value, Device) :
+        #     self.set_editing_frame(DeviceEdit(item_value))

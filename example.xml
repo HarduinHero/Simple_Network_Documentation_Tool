@@ -1,25 +1,19 @@
-<sndp sndt_version='0.0.0' lang='fr' encoding='utf-8'>
+<?xml version="1.0"?>
+<project sndt_version='0.0.0' lang='fr' encoding='utf-8'>
     <tree_structure>
         <view label="Infrastructures logiques">
-            <class id="1" label="Serveur Logique" type="VDEVICE">
-                field
-            </class>
+            <class id="1" label="Serveur Logique" primitive="VDEVICE"></class>
         </view>
         <view label="Infrastructures physiques">
-            <class id="3" label="Serveur physique" type="PDEVICE"/>
-            <class id="4" label="Site géographique" type="LOCATION"/>
-            <class id="5" label="Baie" type="RACK"/>
-            <class id="6" label="Poste de travail" type="PDEVICE"/>
+            <class id="3" label="Serveur physique" primitive="PDEVICE"></class>
+            <class id="4" label="Site géographique" primitive="LOCATION"></class>
+            <class id="5" label="Baie" primitive="RACK"></class>
+            <class id="6" label="Poste de travail" primitive="PDEVICE"></class>
         </view>
     </tree_structure>
     <data>
+        <object id="1" class="4"></object>
 
 
-
-    <data>
-    <relation>
-        <rel>
-
-    <relations>
-
-</sndp>
+    </data>
+</project>
