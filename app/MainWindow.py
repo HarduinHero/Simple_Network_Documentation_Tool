@@ -1,4 +1,5 @@
 from typing import Optional, Union
+from pathlib import Path
 
 from model.Project import Project
 from PyQt6.QtCore import Qt
@@ -6,6 +7,7 @@ from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QFileDialog, QMainWindow, QTreeWidgetItem
 from ui.mainwindow import Ui_main_window
 from NavigationTree import NavigationTree
+from EditProjectDialog import EditProjectWindow
 
 ERROR_TIMEOUT = 2500
 
@@ -87,12 +89,13 @@ class MainWindow(QMainWindow, Ui_main_window) :
         return lambda: print(f'ACTION NOT HANDLED YET : {msg}')
     
     def action_new_project_handler(self) :
-        filename = QFileDialog.getSaveFileName(self, 'New project')[0]
-        self.current_project = Project.new_project(filename, 'test')
-        self.navigation_tree.update_ui()
+        # TODO test pour ne pas ecraser projet
+        self.current_project = Project()
+        dlg = EditProjectWindow(self, project=self.current_project)
+        dlg.exec()
 
     def action_open_project_handler(self) :
-        filename = QFileDialog.getOpenFileName(self, 'Open project')[0]
+        filename = QFileDialog.getOpenFileName(self, 'Open project', str(Path.home()))[0]
         self.current_project = Project.open_project(filename)
         self.navigation_tree.update_ui()  
 

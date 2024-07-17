@@ -8,10 +8,10 @@ class Project :
 #               ATTRIBUTS               #
 #########################################
 
-    metadata: dict[str,str] = {}
-    filename: str
-    data_objects_classes = {}
-    data_objects = {}
+    metadata: dict[str,str]     = {}
+    filename: Optional[str]     = None
+    data_objects_classes: dict  = {}
+    data_objects: dict          = {}
 
 #########################################
 #              CONSTRUCTOR              #
