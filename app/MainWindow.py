@@ -4,7 +4,7 @@ from pathlib import Path
 from model.Project import Project
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QAction
-from PyQt6.QtWidgets import QFileDialog, QMainWindow, QTreeWidgetItem
+from PyQt6.QtWidgets import QFileDialog, QMainWindow, QTreeWidgetItem, QMessageBox
 from ui.mainwindow import Ui_main_window
 from NavigationTree import NavigationTree
 from EditProjectDialog import EditProjectWindow
@@ -17,12 +17,12 @@ class MainWindow(QMainWindow, Ui_main_window) :
         super(MainWindow, self).__init__(*args, **kwargs)
         self.setupUi(self)
 
+        # Initializing the current project
+        self.current_project = Project()
+
         # Open with command arg
-        self.current_project : Optional[Project]
         if project_path is not None :
-            self.current_project = Project.open_project(project_path)
-        else :
-            self.current_project = None
+            self.current_project.init_open(Path(project_path))
 
         # Ataching menubar action
         self.init_menu_load_example_project()
@@ -40,7 +40,7 @@ class MainWindow(QMainWindow, Ui_main_window) :
         self.navigation_tree.itemClicked.connect(self.select_element_in_nav_tree_handler)
         self.navigation_tree.update_ui()
 
-        #
+        # Setup central zone 
         self.current_editing_frame = None
 
         
@@ -89,23 +89,31 @@ class MainWindow(QMainWindow, Ui_main_window) :
         return lambda: print(f'ACTION NOT HANDLED YET : {msg}')
     
     def action_new_project_handler(self) :
-        # TODO test pour ne pas ecraser projet
-        self.current_project = Project()
-        dlg = EditProjectWindow(self, project=self.current_project)
-        dlg.exec()
+        if not(self.current_project._is_saved) and self.current_project._is_initialized :
+            ok_new_project = QMessageBox.warning(self, 
+                                'Curent not saved',
+                                'Your current project has not been saved.\nIf you continue changes will be lost.',
+                                QMessageBox.StandardButton.Cancel | QMessageBox.StandardButton.Ignore
+                            ) == QMessageBox.StandardButton.Ignore
+        else :
+            ok_new_project = True
+            
+        if ok_new_project :
+            dlg = EditProjectWindow(self, project=self.current_project)
+            dlg.exec()
 
     def action_open_project_handler(self) :
-        filename = QFileDialog.getOpenFileName(self, 'Open project', str(Path.home()))[0]
-        self.current_project = Project.open_project(filename)
+        filename = QFileDialog.getOpenFileName(self, 'Open project', str(Path.home()), 'SNDT project (*.sndp *.zip)')[0]
+        # nothing if selection canceled
+        if filename == '' :
+            return None
+        self.current_project.init_open(Path(filename))
         self.navigation_tree.update_ui()  
 
     def action_load_example_project(self) :
-        if self.current_project == None :
-            self.statusBar().showMessage('Error : you have to create a new project first !', ERROR_TIMEOUT) # type: ignore
-        else :
-            action = self.sender()
-            #TODO self.current_project.load_example_project(action.text())
-            self.navigation_tree.update_ui()
+        #TODO self.current_project.load_example_project(action.text())
+        self.navigation_tree.update_ui()
+
 
     def select_element_in_nav_tree_handler(self, e:QTreeWidgetItem) :
         item_value = e.data(1, Qt.ItemDataRole.UserRole)

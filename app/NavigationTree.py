@@ -6,7 +6,7 @@ from typing import Optional, Union
 
 class NavigationTree (QTreeWidget) :
 
-    def __init__(self, project:Optional[Project], *args, **kwargs) :
+    def __init__(self, project:Project, *args, **kwargs) :
         super(NavigationTree, self).__init__(*args, **kwargs)
         self.setupUi()
 
@@ -20,12 +20,12 @@ class NavigationTree (QTreeWidget) :
 
     def update_ui(self) :
 
-        # No file open so no navigation tree neded
-        if self.project is None :
+        # The project has not been initialized so no navigation tree neded
+        if self.project._is_initialized :
             return None
         
         # Building the tree data
-        project_title:str = self.project.metadata['title']
+        project_title:str = self.project.title # type: ignore
         # rack_list:list[Rack] = self.project.racks
         # device_list:list[Device] = self.project.devices
 

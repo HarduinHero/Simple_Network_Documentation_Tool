@@ -1,12 +1,12 @@
 import sys, os
 from PyQt6 import QtWidgets
 from MainWindow import MainWindow
-from Context import Context
+from Config import Config
 
-Context().data = {
-    Context.SNDTVER : '0.0.0',
-    Context.WD      : os.path.dirname(__file__),
-    Context.LANG    : 'fr',
+Config().data = {
+    Config.SNDTVER : '0.0.0',
+    Config.WD      : os.path.dirname(__file__),
+    Config.LANG    : 'fr',
 }
 
 app = QtWidgets.QApplication([])

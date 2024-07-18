@@ -6,7 +6,7 @@ class SingletonMeta(type):
             cls._instances[cls] = instance
         return cls._instances[cls]
 
-class Context(metaclass=SingletonMeta):
+class Config(metaclass=SingletonMeta):
     
     SNDTVER = 'sndt_version'
     WD      = 'working_directory'
