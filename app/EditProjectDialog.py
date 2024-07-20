@@ -7,7 +7,7 @@ from ui.edit_project_dialog import Ui_edit_project_dialog
 
 class EditProjectWindow(QDialog, Ui_edit_project_dialog) :
 
-    def __init__(self, *args, obj=None, project:Project, **kwargs) -> None :
+    def __init__(self, *args, obj=None, project:Optional[Project], **kwargs) -> None :
         super(EditProjectWindow, self).__init__(*args, **kwargs)
         self.setupUi(self)
         
@@ -17,13 +17,13 @@ class EditProjectWindow(QDialog, Ui_edit_project_dialog) :
         self.BT_cancel.clicked.connect(self.bt_cancel_handler)
         self.BT_execute.clicked.connect(self.bt_execute_handler)
 
-        if self.project._is_initialized :
+        if self.project is None :
+            self.setWindowTitle('New project')
+        else :
             self.setWindowTitle('Edit project')
             self.F_filename.setText(self.project.file_path.as_posix()) # type: ignore
             self.F_name.setText(self.project.title)
             self.F_description.setText(self.project.description)
-        else :
-            self.setWindowTitle('New project')
 
     def bt_execute_handler(self) -> None:
         # Checks for EMPTY fields
@@ -37,17 +37,17 @@ class EditProjectWindow(QDialog, Ui_edit_project_dialog) :
             QMessageBox.warning(self, 'Filename is wrong', 'You must specify a file')
             return None
         
-        # Si tout ok edit project
-        if self.project._is_initialized :
-            self.project.file_path   = Path(self.F_filename.text())
-            self.project.title       = self.F_name.text()
-            self.project.description = self.F_description.toPlainText()
-        else :
-            self.project.init_new(
+        
+        if self.project is None  :
+            self.project = Project(
                 Path(self.F_filename.text()),
                 self.F_name.text(),
                 self.F_description.toPlainText()
             )
+        else :
+            self.project.file_path   = Path(self.F_filename.text())
+            self.project.title       = self.F_name.text()
+            self.project.description = self.F_description.toPlainText()
 
         self.accept()
     
@@ -55,7 +55,7 @@ class EditProjectWindow(QDialog, Ui_edit_project_dialog) :
         self.reject()
 
     def bt_f_filename_browse_handler(self) -> None:
-        if self.project.file_path is None :
+        if self.project is None :
             filename:str = QFileDialog.getSaveFileName(self, 'New project path', str(Path.home()), 'SNDT project (*.sndp *.zip)')[0]
         else :
             filename:str = QFileDialog.getSaveFileName(self, 'Project path', self.project.file_path.as_posix(), 'SNDT project (*.sndp *.zip)')[0]

@@ -18,11 +18,11 @@ class MainWindow(QMainWindow, Ui_main_window) :
         self.setupUi(self)
 
         # Initializing the current project
-        self.current_project = Project()
+        self.current_project = None
 
         # Open with command arg
         if project_path is not None :
-            self.current_project.init_open(Path(project_path))
+            self.current_project = Project.load_from_file(Path(project_path))
 
         # Ataching menubar action
         self.init_menu_load_example_project()
@@ -33,12 +33,12 @@ class MainWindow(QMainWindow, Ui_main_window) :
         self.action_user_guide.triggered.connect(self.action_not_handled_yet('action_user_guide'))
         self.action_about.triggered.connect(self.action_not_handled_yet('action_about'))
 
-        # Setup Navigation Tree
-        self.navigation_tree = NavigationTree(self.current_project, parent=self.nav_tree_frame)
-        self.nav_tree_frame_layout.addWidget(self.navigation_tree)
-        self.navigation_tree.show()
-        self.navigation_tree.itemClicked.connect(self.select_element_in_nav_tree_handler)
-        self.navigation_tree.update_ui()
+        # Setup nav tree
+        # self.navigation_tree = NavigationTree(self.current_project, parent=self.nav_tree_frame)
+        # self.nav_tree_frame_layout.addWidget(self.navigation_tree)
+        # self.navigation_tree.show()
+        # self.navigation_tree.itemClicked.connect(self.select_element_in_nav_tree_handler)
+        # self.navigation_tree.update_ui()
 
         # Setup central zone 
         self.current_editing_frame = None
@@ -89,9 +89,9 @@ class MainWindow(QMainWindow, Ui_main_window) :
         return lambda: print(f'ACTION NOT HANDLED YET : {msg}')
     
     def action_new_project_handler(self) :
-        if not(self.current_project._is_saved) and self.current_project._is_initialized :
+        if self.current_project is not None and not(self.current_project._is_saved) :
             ok_new_project = QMessageBox.warning(self, 
-                                'Curent not saved',
+                                'Curent project is not saved',
                                 'Your current project has not been saved.\nIf you continue changes will be lost.',
                                 QMessageBox.StandardButton.Cancel | QMessageBox.StandardButton.Ignore
                             ) == QMessageBox.StandardButton.Ignore
@@ -100,24 +100,26 @@ class MainWindow(QMainWindow, Ui_main_window) :
             
         if ok_new_project :
             dlg = EditProjectWindow(self, project=self.current_project)
-            dlg.exec()
+            if dlg.exec() :
+                self.current_project = dlg.project
+        # self.navigation_tree.set_project(self.current_project)
 
     def action_open_project_handler(self) :
         filename = QFileDialog.getOpenFileName(self, 'Open project', str(Path.home()), 'SNDT project (*.sndp *.zip)')[0]
         # nothing if selection canceled
         if filename == '' :
             return None
-        self.current_project.init_open(Path(filename))
-        self.navigation_tree.update_ui()  
+        self.current_project = Project.load_from_file(Path(filename))
+        # self.navigation_tree.set_project(self.current_project)
 
     def action_load_example_project(self) :
         #TODO self.current_project.load_example_project(action.text())
-        self.navigation_tree.update_ui()
-
+        #self.navigation_tree.update_ui()
+        pass
 
     def select_element_in_nav_tree_handler(self, e:QTreeWidgetItem) :
         item_value = e.data(1, Qt.ItemDataRole.UserRole)
-        print('NotImplemented')
+        print('NotImplemented', item_value)
 
         # if isinstance(item_value, Rack) :
         #     self.set_editing_frame(RackEdit(item_value))

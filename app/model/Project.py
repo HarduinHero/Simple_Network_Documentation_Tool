@@ -8,36 +8,31 @@ class Project :
 #########################################
 #               ATTRIBUTS               #
 #########################################
-    _is_initialized: bool        = False
     _is_saved: bool              = False
-
-    sndt_version: Optional[str] = None
-    lang: Optional[str]         = None
-
-    title: Optional[str]        = None
-    file_path: Optional[Path]   = None
-    description: Optional[str]  = None
-
-    data_objects_classes: dict  = {}
-    data_objects: dict          = {}
+    sndt_version: str
+    lang: str
+    title: str
+    file_path: Path
+    description: str
+    data_objects_classes: dict
+    data_objects: dict
 
 #########################################
 #              CONSTRUCTOR              #
 #########################################
 
-    def init_new(self, file_path:Path, title:str, description:str) -> None :
+    def __init__(self, file_path:Path, title:str, description:str) -> None:
         self.file_path      = file_path
         self.title          = title
         self.description    = description
         self.lang           = Config().data[Config.LANG]
         self.sndt_version   = Config().data[Config.SNDTVER]
         self._is_initialized = True
-        self.save()
+        self.save()        
 
-    
-    def init_open(self, file_path:Path) -> None :
-        self.file_path      = file_path
-        self._is_initialized = True
+    @staticmethod
+    def load_from_file(file_path:Path) -> 'Project' :
+        return Project(file_path, 'loading not implemented yet', 'TODO')
 
     
 #########################################
