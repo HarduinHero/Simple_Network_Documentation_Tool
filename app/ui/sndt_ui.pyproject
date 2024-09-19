@@ -1,0 +1,11 @@
+{
+    "files": [
+        "class_tab.ui",
+        "edit_project_dialog.ui",
+        "error_dialog.ui",
+        "home_tab.ui",
+        "mainwindow.ui",
+        "object.ui",
+        "ressources.qrc"
+    ]
+}

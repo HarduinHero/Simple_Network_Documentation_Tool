@@ -2,7 +2,7 @@ from typing import Optional, Union
 from pathlib import Path
 
 from model.Project import Project
-from PyQt6.QtWidgets import QDialog, QFileDialog, QMessageBox
+from PySide6.QtWidgets import QDialog, QFileDialog, QMessageBox
 from ui.edit_project_dialog import Ui_edit_project_dialog
 
 class EditProjectWindow(QDialog, Ui_edit_project_dialog) :

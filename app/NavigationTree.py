@@ -1,7 +1,7 @@
-from PyQt6.QtWidgets import QTreeWidget, QTreeWidgetItem, QMenu, QSizePolicy, QHeaderView
-from PyQt6.QtCore import Qt, QPoint
+from PySide6.QtWidgets import QTreeWidget, QTreeWidgetItem, QMenu, QSizePolicy, QHeaderView
+from PySide6.QtCore import Qt, QPoint
 from model.Project import Project
-from typing import Optional, Union
+from typing import Optional, Union 
 
 
 class NavigationTree (QTreeWidget) :
